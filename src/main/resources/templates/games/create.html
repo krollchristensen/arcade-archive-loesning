@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret spil</title>
+</head>
+<body>
+<h1>Opret nyt arkadespil</h1>
+
+<p><a th:href="@{/games}">Tilbage til listen</a></p>
+
+<form th:action="@{/games/create}" method="post" th:object="${game}">
+    <div>
+        <label for="title">Titel</label>
+        <input type="text" id="title" th:field="*{title}">
+    </div>
+
+    <div>
+        <label for="releaseYear">Udgivelsesår</label>
+        <input type="number" id="releaseYear" th:field="*{releaseYear}">
+    </div>
+
+    <div>
+        <label for="genre">Genre</label>
+        <input type="text" id="genre" th:field="*{genre}">
+    </div>
+
+    <div>
+        <label for="manufacturer">Producent</label>
+        <input type="text" id="manufacturer" th:field="*{manufacturer}">
+    </div>
+
+    <div>
+        <label for="players">Antal spillere</label>
+        <input type="number" id="players" th:field="*{players}">
+    </div>
+
+    <div>
+        <label for="active">Aktiv</label>
+        <input type="checkbox" id="active" th:field="*{active}">
+    </div>
+
+    <button type="submit">Gem spil</button>
+</form>
+</body>
+</html>

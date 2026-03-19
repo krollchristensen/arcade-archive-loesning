@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spildetaljer</title>
+</head>
+<body>
+<h1>Spildetaljer</h1>
+
+<p><a th:href="@{/games}">Tilbage til listen</a></p>
+
+<p><strong>Id:</strong> <span th:text="${game.id}"></span></p>
+<p><strong>Titel:</strong> <span th:text="${game.title}"></span></p>
+<p><strong>Udgivelsesår:</strong> <span th:text="${game.releaseYear}"></span></p>
+<p><strong>Genre:</strong> <span th:text="${game.genre}"></span></p>
+<p><strong>Producent:</strong> <span th:text="${game.manufacturer}"></span></p>
+<p><strong>Antal spillere:</strong> <span th:text="${game.players}"></span></p>
+<p><strong>Aktiv i arkaden:</strong> <span th:text="${game.active}"></span></p>
+</body>
+</html>
