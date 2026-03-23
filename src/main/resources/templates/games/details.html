@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Spildetaljer</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Spildetaljer</h1>
+<div class="container">
+    <h1>Spildetaljer</h1>
 
-<p><a th:href="@{/games}">Tilbage til listen</a></p>
+    <p><a th:href="@{/games}">Tilbage til listen</a></p>
 
-<p><strong>Id:</strong> <span th:text="${game.id}"></span></p>
-<p><strong>Titel:</strong> <span th:text="${game.title}"></span></p>
-<p><strong>Udgivelsesår:</strong> <span th:text="${game.releaseYear}"></span></p>
-<p><strong>Genre:</strong> <span th:text="${game.genre}"></span></p>
-<p><strong>Producent:</strong> <span th:text="${game.manufacturer}"></span></p>
-<p><strong>Antal spillere:</strong> <span th:text="${game.players}"></span></p>
-<p><strong>Aktiv i arkaden:</strong> <span th:text="${game.active}"></span></p>
+    <img th:src="@{/images/{file}(file=${game.imageName})}" alt="Spilbillede" class="game-image-large">
+    <p><strong>Billednavn:</strong> <span th:text="${game.imageName}"></span></p>
+    <p><strong>Id:</strong> <span th:text="${game.id}"></span></p>
+    <p><strong>Titel:</strong> <span th:text="${game.title}"></span></p>
+    <p><strong>Udgivelsesår:</strong> <span th:text="${game.releaseYear}"></span></p>
+    <p><strong>Genre:</strong> <span th:text="${game.genre}"></span></p>
+    <p><strong>Producent:</strong> <span th:text="${game.manufacturer}"></span></p>
+    <p><strong>Antal spillere:</strong> <span th:text="${game.players}"></span></p>
+    <p><strong>Aktiv i arkaden:</strong> <span th:text="${game.active} ? 'Ja' : 'Nej'"></span></p>
+    <p><strong>Billedfil:</strong> <span th:text="${game.imageName}"></span></p>
+</div>
 </body>
 </html>

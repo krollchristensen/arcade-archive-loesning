@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+h1 {
+    color: #ffd54f;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #4fc3f7;
+    text-decoration: none;
+    margin-right: 12px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1b1b1b;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form div {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+button {
+    background-color: #ff7043;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f4511e;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.game-image-small {
+    width: 90px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.game-image-large {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}

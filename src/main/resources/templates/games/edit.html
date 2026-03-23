@@ -3,46 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger spil</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Rediger arkadespil</h1>
+<div class="container">
+    <h1>Rediger arkadespil</h1>
 
-<p><a th:href="@{/games}">Tilbage til listen</a></p>
+    <p><a th:href="@{/games}">Tilbage til listen</a></p>
 
-<form th:action="@{/games/edit}" method="post" th:object="${game}">
-    <input type="hidden" th:field="*{id}">
+    <form th:action="@{/games/edit}" method="post" th:object="${game}">
+        <input type="hidden" th:field="*{id}">
 
-    <div>
-        <label for="title">Titel</label>
-        <input type="text" id="title" th:field="*{title}">
-    </div>
+        <div>
+            <label for="title">Titel</label>
+            <input type="text" id="title" th:field="*{title}">
+        </div>
 
-    <div>
-        <label for="releaseYear">Udgivelsesår</label>
-        <input type="number" id="releaseYear" th:field="*{releaseYear}">
-    </div>
+        <div>
+            <label for="releaseYear">Udgivelsesår</label>
+            <input type="number" id="releaseYear" th:field="*{releaseYear}">
+        </div>
 
-    <div>
-        <label for="genre">Genre</label>
-        <input type="text" id="genre" th:field="*{genre}">
-    </div>
+        <div>
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" th:field="*{genre}">
+        </div>
 
-    <div>
-        <label for="manufacturer">Producent</label>
-        <input type="text" id="manufacturer" th:field="*{manufacturer}">
-    </div>
+        <div>
+            <label for="manufacturer">Producent</label>
+            <input type="text" id="manufacturer" th:field="*{manufacturer}">
+        </div>
 
-    <div>
-        <label for="players">Antal spillere</label>
-        <input type="number" id="players" th:field="*{players}">
-    </div>
+        <div>
+            <label for="players">Antal spillere</label>
+            <input type="number" id="players" th:field="*{players}">
+        </div>
 
-    <div>
-        <label for="active">Aktiv</label>
-        <input type="checkbox" id="active" th:field="*{active}">
-    </div>
+        <div>
+            <label for="imageName">Billedfil</label>
+            <input type="text" id="imageName" th:field="*{imageName}" placeholder="fx pacman.jpg">
+        </div>
 
-    <button type="submit">Opdater spil</button>
-</form>
+        <div>
+            <label for="active">Aktiv</label>
+            <input type="checkbox" id="active" th:field="*{active}">
+        </div>
+
+        <button type="submit">Opdater spil</button>
+    </form>
+</div>
 </body>
 </html>

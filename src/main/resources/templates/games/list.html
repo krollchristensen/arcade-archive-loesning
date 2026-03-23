@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Alle spil</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Alle arkadespil</h1>
+<div class="container">
+    <h1>Alle arkadespil</h1>
 
-<p>
-    <a th:href="@{/}">Forside</a> |
-    <a th:href="@{/games/create}">Opret nyt spil</a>
-</p>
+    <p>
+        <a th:href="@{/}">Forside</a>
+        <a th:href="@{/games/create}">Opret nyt spil</a>
+    </p>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Titel</th>
-        <th>År</th>
-        <th>Genre</th>
-        <th>Producent</th>
-        <th>Spillere</th>
-        <th>Aktiv</th>
-        <th>Handlinger</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="game : ${games}">
-        <td th:text="${game.id}"></td>
-        <td th:text="${game.title}"></td>
-        <td th:text="${game.releaseYear}"></td>
-        <td th:text="${game.genre}"></td>
-        <td th:text="${game.manufacturer}"></td>
-        <td th:text="${game.players}"></td>
-        <td th:text="${game.active}"></td>
-        <td>
-            <a th:href="@{/games/{id}(id=${game.id})}">Detaljer</a>
-            <a th:href="@{/games/edit/{id}(id=${game.id})}">Rediger</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Billede</th>
+            <th>Titel</th>
+            <th>År</th>
+            <th>Genre</th>
+            <th>Producent</th>
+            <th>Spillere</th>
+            <th>Aktiv</th>
+            <th>Handlinger</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${games}">
+            <td th:text="${game.id}"></td>
+            <td>
+                <img th:src="@{/images/{file}(file=${game.imageName})}" alt="Spilbillede" class="game-image-small">
+            </td>
+            <td th:text="${game.title}"></td>
+            <td th:text="${game.releaseYear}"></td>
+            <td th:text="${game.genre}"></td>
+            <td th:text="${game.manufacturer}"></td>
+            <td th:text="${game.players}"></td>
+            <td th:text="${game.active} ? 'Ja' : 'Nej'"></td>
+            <td>
+                <a th:href="@{/games/{id}(id=${game.id})}">Detaljer</a>
+                <a th:href="@{/games/edit/{id}(id=${game.id})}">Rediger</a>
 
-            <form th:action="@{/games/delete/{id}(id=${game.id})}" method="post" style="display:inline;">
-                <button type="submit">Slet</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+                <form th:action="@{/games/delete/{id}(id=${game.id})}" method="post" class="inline-form">
+                    <button type="submit">Slet</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

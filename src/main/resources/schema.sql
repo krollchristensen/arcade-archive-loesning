@@ -7,5 +7,6 @@ CREATE TABLE arcade_games (
                               genre VARCHAR(50) NOT NULL,
                               manufacturer VARCHAR(100) NOT NULL,
                               players INT NOT NULL,
-                              active BOOLEAN NOT NULL
+                              active BOOLEAN NOT NULL,
+                              image_name VARCHAR(255) NOT NULL
 );

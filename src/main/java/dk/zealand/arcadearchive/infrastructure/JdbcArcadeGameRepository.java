@@ -20,7 +20,7 @@ public class JdbcArcadeGameRepository implements ArcadeGameRepository {
     @Override
     public List<ArcadeGame> findAll() {
         String sql = """
-                SELECT id, title, release_year, genre, manufacturer, players, active
+                SELECT id, title, release_year, genre, manufacturer, players, active, image_name
                 FROM arcade_games
                 ORDER BY title
                 """;
@@ -33,7 +33,8 @@ public class JdbcArcadeGameRepository implements ArcadeGameRepository {
                         rs.getString("genre"),
                         rs.getString("manufacturer"),
                         rs.getInt("players"),
-                        rs.getBoolean("active")
+                        rs.getBoolean("active"),
+                        rs.getString("image_name")
                 )
         );
     }
@@ -41,7 +42,7 @@ public class JdbcArcadeGameRepository implements ArcadeGameRepository {
     @Override
     public Optional<ArcadeGame> findById(int id) {
         String sql = """
-                SELECT id, title, release_year, genre, manufacturer, players, active
+                SELECT id, title, release_year, genre, manufacturer, players, active, image_name
                 FROM arcade_games
                 WHERE id = ?
                 """;
@@ -54,7 +55,8 @@ public class JdbcArcadeGameRepository implements ArcadeGameRepository {
                         rs.getString("genre"),
                         rs.getString("manufacturer"),
                         rs.getInt("players"),
-                        rs.getBoolean("active")
+                        rs.getBoolean("active"),
+                        rs.getString("image_name")
                 ), id
         );
 
@@ -67,24 +69,46 @@ public class JdbcArcadeGameRepository implements ArcadeGameRepository {
 
     @Override
     public void save(ArcadeGame arcadeGame) {
-        // TODO:
-        // Lav SQL til INSERT
-        // Brug jdbcTemplate.update(...)
-        throw new UnsupportedOperationException("save() er ikke implementeret endnu");
+        String sql = """
+                INSERT INTO arcade_games (title, release_year, genre, manufacturer, players, active, image_name)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                """;
+
+        jdbcTemplate.update(sql,
+                arcadeGame.getTitle(),
+                arcadeGame.getReleaseYear(),
+                arcadeGame.getGenre(),
+                arcadeGame.getManufacturer(),
+                arcadeGame.getPlayers(),
+                arcadeGame.isActive(),
+                arcadeGame.getImageName()
+        );
     }
 
     @Override
     public void update(ArcadeGame arcadeGame) {
-        // TODO:
-        // Lav SQL til UPDATE
-        // Husk WHERE id = ?
-        throw new UnsupportedOperationException("update() er ikke implementeret endnu");
+        String sql = """
+                UPDATE arcade_games
+                SET title = ?, release_year = ?, genre = ?, manufacturer = ?, players = ?, active = ?, image_name = ?
+                WHERE id = ?
+                """;
+
+        jdbcTemplate.update(sql,
+                arcadeGame.getTitle(),
+                arcadeGame.getReleaseYear(),
+                arcadeGame.getGenre(),
+                arcadeGame.getManufacturer(),
+                arcadeGame.getPlayers(),
+                arcadeGame.isActive(),
+                arcadeGame.getImageName(),
+                arcadeGame.getId()
+        );
     }
 
     @Override
     public void deleteById(int id) {
-        // TODO:
-        // Lav SQL til DELETE
-        throw new UnsupportedOperationException("deleteById() er ikke implementeret endnu");
+        String sql = "DELETE FROM arcade_games WHERE id = ?";
+
+        jdbcTemplate.update(sql, id);
     }
 }

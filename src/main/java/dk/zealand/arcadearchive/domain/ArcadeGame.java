@@ -9,11 +9,12 @@ public class ArcadeGame {
     private String manufacturer;
     private int players;
     private boolean active;
+    private String imageName;
 
     public ArcadeGame() {
     }
 
-    public ArcadeGame(int id, String title, int releaseYear, String genre, String manufacturer, int players, boolean active) {
+    public ArcadeGame(int id, String title, int releaseYear, String genre, String manufacturer, int players, boolean active, String imageName) {
         this.id = id;
         this.title = title;
         this.releaseYear = releaseYear;
@@ -21,15 +22,17 @@ public class ArcadeGame {
         this.manufacturer = manufacturer;
         this.players = players;
         this.active = active;
+        this.imageName = imageName;
     }
 
-    public ArcadeGame(String title, int releaseYear, String genre, String manufacturer, int players, boolean active) {
+    public ArcadeGame(String title, int releaseYear, String genre, String manufacturer, int players, boolean active, String imageName) {
         this.title = title;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.manufacturer = manufacturer;
         this.players = players;
         this.active = active;
+        this.imageName = imageName;
     }
 
     public int getId() {
@@ -86,5 +89,13 @@ public class ArcadeGame {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
